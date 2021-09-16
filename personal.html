@@ -4,12 +4,51 @@
 <script src="/node_modules/focus-visible/dist/focus-visible.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><title>Emmett S.</title><link rel="icon" type="image/png" sizes="200x200" href="assets/img/Personal%20Website%20Icon.png?h=7e8c21f5107bf497562752735a3d86f3"><link rel="icon" type="image/png" sizes="200x200" href="assets/img/Personal%20Website%20Icon.png?h=7e8c21f5107bf497562752735a3d86f3"><link rel="icon" type="image/png" sizes="200x200" href="assets/img/Personal%20Website%20Icon.png?h=7e8c21f5107bf497562752735a3d86f3"><link rel="icon" type="image/png" sizes="200x200" href="assets/img/Personal%20Website%20Icon.png?h=7e8c21f5107bf497562752735a3d86f3"><link rel="icon" type="image/png" sizes="200x200" href="assets/img/Personal%20Website%20Icon.png?h=7e8c21f5107bf497562752735a3d86f3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"><link rel="stylesheet" href="assets/css/styles.min.css?h=11a6e2ddabe9538c647c82833b04bd0d"></head><body id="body" class="darkCompatable" style="width: 100vw;max-width: 100vw;min-height: 100vh;padding-top: 5vh;padding-bottom: 5vh;color: #131a15;background: #fcf7f3;"><button class="btn btn-primary" data-bss-disabled-mobile="true" data-bss-hover-animate="flash" id="darkMode" type="button" style="margin-left: 3vw;width: 40px;height: 40px;border-style: none;background: url(&quot;assets/img/sun.svg?h=f9b647d74aa61191ad21f40bb46aa8cb&quot;) no-repeat;background-size: contain;" title="Dark Mode Toggle"></button><!-- Start: Dark Mode Button --><script>
+    
+    let timeToSwitchToDark = 19;
+    
+    
+    
     var b1 = document.getElementById("darkMode");
     var html = document.getElementById("html");
     var body = document.getElementById("body");
-    var links = document.getElementByCl
+    
+    var today = new Date();
+    var time = today.getHours();
 
     var dark = false;
+    
+    
+    function detectTimeForDark(){
+        if (time>timeToSwitchToDark){
+            b1.style.backgroundImage = "url('assets/img//moon.svg?h=06c69a0ef18825380e5d47da0c7889f8')";
+            b1.style.backgroundRepeat = "no-repeat";
+            b1.style.backgroundSize = "contain";
+
+            html.style.background = "#131a15";
+            body.style.background = "#131a15";
+            body.style.color = "#588a8c";
+            $('.darkCompatable').css("color" , "#588a8c");
+
+            dark = true;
+
+        } else {
+            b1.style.backgroundImage = "url('assets/img//sun.svg?h=f9b647d74aa61191ad21f40bb46aa8cb')";
+            b1.style.backgroundRepeat = "no-repeat";
+            b1.style.backgroundSize = "contain";
+
+            html.style.background = "#fcf7f3";
+            body.style.background = "#fcf7f3";
+            body.style.color = "#131a15";
+            $('.darkCompatable').css("color" , "#131a15");
+        }
+    }
+    
+    
+    window.onload = detectTimeForDark;
+    
+    
+    
 
     b1.onclick = function() {
         if (dark){
@@ -34,7 +73,6 @@
 
         dark = !dark;
 
-        localStorage && (localStorage.dark = dark);
     };
 
-</script><!-- End: Dark Mode Button --><h1 class="d-md-flex justify-content-md-center pulse animated interBold" style="text-align: center;margin: 119px 0px -2px;margin-top: 5vh;">&nbsp;Hello, <br>Emmett</h1><!-- Start: Space for Links --><div class="d-md-flex justify-content-md-center pulse animated" style="margin-top: 7vh;margin-right: 5vw;margin-bottom: 5vh;margin-left: 5vw;padding-bottom: 10px;"><!-- Start: Links --><div class="d-md-flex justify-content-md-center border-bottom" style="text-align: center;width: auto;max-width: fit-content;padding-bottom: 10px;"><a class="emmettsLink darkCompatable" href="https://neeva.com/">Neeva</a><a class="emmettsLink darkCompatable" href="https://emmett-shaughnessy.notion.site/Hello-Emmett-e4aba5c8e94246dca7ff656baa3389e6">Notion</a><a class="emmettsLink darkCompatable" href="https://thiswebsitebelongstoemmett.com/">Main</a></div><!-- End: Links --></div><!-- End: Space for Links --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script><script src="assets/js/script.min.js?h=c0303b1f9f8c178e8ce879e04af559c3"></script></body></html>
+</script><!-- End: Dark Mode Button --><h1 class="d-md-flex justify-content-md-center pulse animated interBold darkCompatable" style="text-align: center;margin: 119px 0px -2px;margin-top: 5vh;">&nbsp;Hello, <br>Emmett</h1><!-- Start: Space for Links --><div class="d-md-flex justify-content-md-center pulse animated" style="margin-top: 7vh;margin-right: 5vw;margin-bottom: 5vh;margin-left: 5vw;padding-bottom: 10px;"><!-- Start: Links --><div class="d-md-flex justify-content-md-center border-bottom" style="text-align: center;width: auto;max-width: fit-content;padding-bottom: 10px;"><a class="emmettsLink darkCompatable" href="https://neeva.com/">Neeva</a><a class="emmettsLink darkCompatable" href="https://emmett-shaughnessy.notion.site/Hello-Emmett-e4aba5c8e94246dca7ff656baa3389e6">Notion</a><a class="emmettsLink darkCompatable" href="https://thiswebsitebelongstoemmett.com/">Main</a></div><!-- End: Links --></div><!-- End: Space for Links --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script><script src="assets/js/script.min.js?h=c0303b1f9f8c178e8ce879e04af559c3"></script></body></html>
