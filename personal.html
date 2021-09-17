@@ -38,7 +38,15 @@
 
         } else {
             
-            document.getElementById("darkModeTimer").innerHTML = "Dark Mode activates in " + (timeToSwitchToDark-time) + " hours";
+            let timeTillDark = (timeToSwitchToDark-time);
+            var timeUnit = "";
+            
+            if (timeTillDark == 1){
+                timeUnit = " hour"
+            }else{
+                timeUnit = " hours"
+            }
+            document.getElementById("darkModeTimer").innerHTML = "Dark Mode activates in " + timeTillDark + timeUnit;
             
             b1.style.backgroundImage = "url('assets/img//sun.svg?h=f9b647d74aa61191ad21f40bb46aa8cb')";
             b1.style.backgroundRepeat = "no-repeat";
