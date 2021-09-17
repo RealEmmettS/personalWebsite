@@ -21,7 +21,7 @@
     
     function detectTimeForDark(){
 
-        if (timeToSwitchToDark-time <= 0 || 6-time <= 0){
+        if (time >= timeToSwitchToDark || time <= 6){
             
                 
             b1.style.backgroundImage = "url('assets/img//moon.svg?h=06c69a0ef18825380e5d47da0c7889f8')";

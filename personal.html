@@ -21,7 +21,7 @@
     
     function detectTimeForDark(){
 
-        if (timeToSwitchToDark-time <= 0 || 6-time <= 0){
+        if (time >= timeToSwitchToDark || time <= 6){
             
             document.getElementById("darkModeTimer").innerHTML = "Dark Mode is activated";
                 
