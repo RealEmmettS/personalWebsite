@@ -125,6 +125,10 @@
     b1.onclick = function() {
         if (dark == "yes"){
             console.log("Dark mode manually toggled");
+
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = "☒ Auto";
+
             turnLight();
             localStorage.setItem("isDark", dark);
             localStorage.removeItem("autoDark");
@@ -132,6 +136,10 @@
 
         }else{
             console.log("Dark mode manually toggled");
+
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = "☒ Auto";
+
             turnDark();
             localStorage.setItem("isDark", dark);
             localStorage.removeItem("autoDark");
@@ -143,7 +151,9 @@
     // Toggles auto dark mode
     b2.onclick = function () {
 
-        if (autoDark == "no"){
+
+
+        if (autoDark == "no" || autoDark == null){
             $('#darkModeAUTO').css("font-weight" , "800");
             b2.innerHTML = "☑ Auto";
 
