@@ -61,7 +61,10 @@
     }
     
     
-    window.onload = detectTimeForDark;
+    window.onload = function () {
+         detectTimeForDark(); //Make sure the function fires as soon as the page is loaded
+        setTimeout(doSomething, 300000); //Then set it to run again after ten minutes
+    }
     
     
     
