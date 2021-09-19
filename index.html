@@ -17,8 +17,8 @@
     var today = new Date();
     var time = today.getHours();
 
-    var dark = "no";
-    var autoDark = "yes";
+    var dark = localStorage.getItem("isDark");;
+    var autoDark = localStorage.getItem("autoDark");
     
     // Setup - Dark / Light functions
     function turnDark(){
@@ -85,9 +85,12 @@
 
             autoDark = "yes";
             localStorage.setItem("autoDark", autoDark);
-            localStorage.setItem("isDark", null);
+            localStorage.removeItem("isDark");
         }else{
             console.log("User does not prefer auto dark");
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = "☒ Auto";
+            
             if (storedDark != null){
                 console.log("User \'Dark\' preference not null.");
                 if (storedDark == "yes"){
@@ -110,6 +113,7 @@
     
     // Runs time-based dark mode on page load and every 5 minutes after page load.
     window.onload = function () {
+        console.log("Running \'onLoad()\' functions...");
         checkIfUserPrefersDark();
 
         setTimeout(checkIfUserPrefersDark, 300000); 
@@ -123,14 +127,14 @@
             console.log("Dark mode manually toggled");
             turnLight();
             localStorage.setItem("isDark", dark);
-            localStorage.setItem("autoDark", null);
+            localStorage.removeItem("autoDark");
             console.log("Dark mode setting stored");
 
         }else{
             console.log("Dark mode manually toggled");
             turnDark();
             localStorage.setItem("isDark", dark);
-            localStorage.setItem("autoDark", null);
+            localStorage.removeItem("autoDark");
             console.log("Dark mode setting stored");
         }
 
@@ -147,7 +151,7 @@
 
             autoDark = "yes";
             localStorage.setItem("autoDark", autoDark);
-            localStorage.setItem("isDark", null);
+            localStorage.removeItem("isDark");
             console.log("Auto dark is now active");
 
         }else{
@@ -155,7 +159,7 @@
             b2.innerHTML = "☒ Auto";
 
             autoDark = "no";
-            localStorage.setItem("autoDark", null);
+            localStorage.removeItem("autoDark");
             dark = "no";
             turnLight();
             localStorage.setItem("isDark", dark);
