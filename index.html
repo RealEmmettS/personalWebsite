@@ -92,10 +92,11 @@
             b2.innerHTML = "☒ Auto";
             
             if (storedDark != null){
-                console.log("User \'Dark\' preference not null.");
                 if (storedDark == "yes"){
+                    console.log("User prefers Dark mode");
                     turnDark();
                 }else{
+                    console.log("User prefers Light mode");
                     turnLight()
                 }
             }else{
