@@ -93,21 +93,115 @@
         }
 
     }
+
+
+    function checkIfUserPrefersDark(){
+        let storedDark = localStorage.getItem("isDark");
+        let storedAutoDark = localStorage.getItem("autoDark");
+
+        if (storedAutoDark != null){
+            console.log("User prefers auto dark");
+            // Same as b2.onClick function
+            $('#darkModeAUTO').css("font-weight" , "800");
+            b2.innerHTML = "☑ Auto";
+
+            detectTimeForDark();
+
+            autoDark = "yes";
+            localStorage.setItem("autoDark", autoDark);
+            localStorage.removeItem("isDark");
+        }else{
+            console.log("User does not prefer auto dark");
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = "☒ Auto";
+            
+            if (storedDark != null){
+                if (storedDark == "yes"){
+                    console.log("User prefers Dark mode");
+                    turnDark();
+                }else{
+                    console.log("User prefers Light mode");
+                    turnLight()
+                }
+            }else{
+                console.log("User \'Dark\' and \'Auto Dark\' preference is null.");
+                console.log("Activating auto dark ");
+                autoDark = "yes";
+                localStorage.setItem("autoDark", autoDark);
+
+            }
+        }
+
+        
+
+    }
     
     
     window.onload = function () {
-         detectTimeForDark(); //Make sure the function fires as soon as the page is loaded
+
+        console.log("Running \'onLoad()\' functions...");
+        checkIfUserPrefersDark();
         setTimeout(detectTimeForDark(), 30000); //Then set it to run again after 30 seconds
+
     }
     
     
     
 
+    // Toggles dark mode
     b1.onclick = function() {
-        if (dark){
+        if (dark == "yes"){
+            console.log("Dark mode manually toggled");
+
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = "☒ Auto";
+
             turnLight();
+            localStorage.setItem("isDark", dark);
+            localStorage.removeItem("autoDark");
+            console.log("Dark mode setting stored");
+
         }else{
+            console.log("Dark mode manually toggled");
+
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = "☒ Auto";
+
             turnDark();
+            localStorage.setItem("isDark", dark);
+            localStorage.removeItem("autoDark");
+            console.log("Dark mode setting stored");
+        }
+
+    };
+
+
+    // Toggles auto dark mode
+    b2.onclick = function () {
+
+
+
+        if (autoDark == "no" || autoDark == null){
+            $('#darkModeAUTO').css("font-weight" , "800");
+            b2.innerHTML = "☑ Auto";
+
+            detectTimeForDark();
+
+            autoDark = "yes";
+            localStorage.setItem("autoDark", autoDark);
+            localStorage.removeItem("isDark");
+            console.log("Auto dark is now active");
+
+        }else{
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = "☒ Auto";
+
+            autoDark = "no";
+            localStorage.removeItem("autoDark");
+            dark = "no";
+            turnLight();
+            localStorage.setItem("isDark", dark);
+            console.log("Auto dark is now inactive");
         }
 
     };
