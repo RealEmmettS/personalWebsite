@@ -17,6 +17,9 @@
     var today = new Date();
     var time = today.getHours();
 
+    var autoOnText = "Auto: ✓";
+    var autoOffText = "Auto: ✕";
+
     var dark = localStorage.getItem("isDark");;
     var autoDark = localStorage.getItem("autoDark");
     
@@ -95,7 +98,7 @@
             console.log("User prefers auto dark");
             // Same as b2.onClick function
             $('#darkModeAUTO').css("font-weight" , "800");
-            b2.innerHTML = "☑ Auto";
+            b2.innerHTML = autoOnText;
 
             detectTimeForDark();
 
@@ -105,7 +108,7 @@
         }else{
             console.log("User does not prefer auto dark");
             $('#darkModeAUTO').css("font-weight" , "300");
-            b2.innerHTML = "☒ Auto";
+            b2.innerHTML = autoOffText;
             
             if (storedDark != null){
                 if (storedDark == "yes"){
@@ -148,7 +151,7 @@
             console.log("Dark mode manually toggled");
 
             $('#darkModeAUTO').css("font-weight" , "300");
-            b2.innerHTML = "☒ Auto";
+            b2.innerHTML = autoOffText;
 
             turnLight();
             localStorage.setItem("isDark", dark);
@@ -159,7 +162,7 @@
             console.log("Dark mode manually toggled");
 
             $('#darkModeAUTO').css("font-weight" , "300");
-            b2.innerHTML = "☒ Auto";
+            b2.innerHTML = autoOffText;
 
             turnDark();
             localStorage.setItem("isDark", dark);
@@ -176,7 +179,7 @@
 
         if (autoDark == "no" || autoDark == null){
             $('#darkModeAUTO').css("font-weight" , "800");
-            b2.innerHTML = "☑ Auto";
+            b2.innerHTML = autoOnText;
 
             detectTimeForDark();
 
@@ -187,7 +190,7 @@
 
         }else{
             $('#darkModeAUTO').css("font-weight" , "300");
-            b2.innerHTML = "☒ Auto";
+            b2.innerHTML = autoOffText;
 
             autoDark = "no";
             localStorage.removeItem("autoDark");
