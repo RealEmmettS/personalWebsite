@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html id="html" class="darkCompatable" lang="en">
+
+<head>
+    <meta charset="utf-8">
+<script src="node_modules/remove-focus-outline/outline.js"></script>
+
+<script src="/node_modules/focus-visible/dist/focus-visible.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="shaughnessy" data-description="Support me on Buy me a coffee!" data-message="" data-color="var(--bmacColor)" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Emmett Shaughnessy</title>
+    <meta name="theme-color" content="#fcf7f3">
+    <meta name="twitter:card" content="">
+    <link rel="icon" type="image/png" sizes="2000x2000" href="/assets/img/Favicon.png">
+    <link rel="icon" type="image/png" sizes="2000x2000" href="/assets/img/Favicon.png">
+    <link rel="icon" type="image/png" sizes="2000x2000" href="/assets/img/Favicon.png">
+    <link rel="icon" type="image/png" sizes="2000x2000" href="/assets/img/Favicon.png">
+    <link rel="icon" type="image/png" sizes="2000x2000" href="/assets/img/Favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+</head>
+
+<body id="body" class="darkCompatable">
+    <!-- Start: Main -->
+    <div style="width: 100vw;min-height: 100vh;">
+        <!-- Start: Dark Mode Buttons -->
+        <div class="d-flex justify-content-lg-start align-items-lg-center" style="width: 100vw;height: fit-content;">
+            <!-- Start: Dark Buttons -->
+            <div class="d-flex d-md-flex flex-row align-items-center justify-content-md-center align-items-lg-center" style="width: fit-content;height: fit-content;margin-left: 20px;padding-top: 20px;"><button class="btn btn-primary" data-bss-disabled-mobile="true" data-bss-hover-animate="flash" id="darkMode" type="button" style="width: 40px;height: 40px;border-style: none;background: url(&quot;/assets/img/sun.svg&quot;) no-repeat;background-size: contain;min-height: 40px;max-height: 40px;min-width: 40px;max-width: 40px;margin-right: 15px;" title="Toggle dark mode"></button><button class="btn btn-primary" id="darkModeAUTO" type="button" style="width: auto;height: 40px;min-height: 40px;max-height: 40px;background: rgba(13,110,253,0);color: rgb(145,145,145);text-align: center;padding: 0px;border-style: none;">Auto</button></div><!-- End: Dark Buttons -->
+        </div><!-- End: Dark Mode Buttons -->
+        <!-- Start: Main Info -->
+        <div class="d-flex d-md-flex flex-column justify-content-center align-items-center justify-content-md-center align-items-lg-center" style="height: fit-content;width: 100vw;margin: 0px;padding: 0px;padding-bottom: 5vh;padding-top: 0px;min-height: 100vh;">
+            <h1 class="darkCompatable interBold2" style="margin-top: 20px;">Wallpapers</h1>
+            <p class="d-md-flex justify-content-evenly justify-content-md-center pulse animated interLight" style="text-align: center;margin: 29px 42.6px;margin-right: 5vw;margin-left: 5vw;font-size: 35;margin-top: 5vh;margin-bottom: 0px;">Curated by Emmett Shaughnessy</p><!-- Start: Space for Links -->
+            <div class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex justify-content-center align-items-center justify-content-sm-center justify-content-md-center pulse animated darkCompatable" style="margin-top: 7vh;margin-right: 5vw;margin-bottom: 5vh;margin-left: 5vw;padding-bottom: 10px;">
+                <!-- Start: Links -->
+                <div class="border rounded-pill border-light shadow-lg d-flex d-md-flex flex-column align-items-center flex-sm-column flex-md-row justify-content-md-center flex-lg-row flex-xl-row flex-xxl-row" id="linkContainer" style="text-align: center;width: auto;max-width: fit-content;padding-bottom: 10px;padding-right: 20px;padding-left: 20px;padding-top: 10px;border-style: none;border-color: rgba(49,52,55,0);border-top-color: rgb(49,;border-right-color: 52,;border-bottom-color: 55);border-left-color: 52,;"><a class="d-flex d-md-flex justify-content-between align-items-center align-items-md-center pulse animated emmettsLink darkCompatable" href="https://www.dropbox.com/sh/br0mqz4yufg1usf/AADuGQRkdC2xxHUBB8FaCogPa?dl=0" style="min-height: 100px;">Download</a></div><!-- End: Links -->
+            </div><!-- End: Space for Links -->
+        </div><!-- End: Main Info -->
+    </div><!-- End: Main --><script>
+
+    // Code for personal.html
+
+    let timeToSwitchToDark = 19;
+
+
+    // Setup - HTML Integration
+    var b1 = document.getElementById("darkMode");
+    var b2 = document.getElementById("darkModeAUTO");
+    var html = document.getElementById("html");
+    var body = document.getElementById("body");
+
+    var today = new Date();
+    var time = today.getHours();
+
+    var autoOnText = "Auto: ✓";
+    var autoOffText = "Auto: ✕";
+
+    var dark = localStorage.getItem("isDark");;
+    var autoDark = localStorage.getItem("autoDark");
+
+
+    // Setup - Dark / Light functions
+    function turnDark(){
+
+        console.log("activating dark mode");
+        //document.getElementById("darkModeTimer").innerHTML = "Dark Mode is activated";
+
+        document.body.style.setProperty('--bmacColor',"#588A8C")
+
+        b1.style.backgroundImage = "url('/assets/img//moon.svg')";
+        b1.style.backgroundRepeat = "no-repeat";
+        b1.style.backgroundSize = "contain";
+
+        html.style.background = "#131a15";
+        body.style.background = "#131a15";
+        body.style.color = "#588a8c";
+
+        $('.darkCompatable').css("color" , "#588a8c");
+        $('.navButton').css("color" , "#131a15"); //Dark Text
+        $('.navButton').css("backgroundColor" , "#588a8c"); //Light Background
+
+        document.getElementById("linkContainer").classList.remove("border-light"); document.getElementById("linkContainer").classList.add('border-dark');
+
+
+        //document.getElementsByClassName("portalButton").style.background = "#131a15";  document.getElementsByClassName("portalButton").style.color = "#588a8c";
+
+
+        dark = "yes";
+
+        console.log("dark active");
+    }
+
+    function turnLight(){
+        console.log("de-activating dark mode");
+
+        today = new Date();
+        time = today.getHours();
+
+        console.log("detecting time")
+
+        let timeTillDark = (timeToSwitchToDark-time);
+        if (time >= timeToSwitchToDark || timeTillDark <= 0){
+
+            var timeUnit = "";
+
+            if (timeTillDark == 1 || timeTillDark == -1){
+                timeUnit = " hour"
+            }else{
+                timeUnit = " hours"
+            }
+            //document.getElementById("darkModeTimer").innerHTML = "Dark Mode was activated " + Math.abs(timeTillDark) + timeUnit + " ago";
+
+        } else {
+
+            let timeTillDark = (timeToSwitchToDark-time);
+            var timeUnit = "";
+
+            if (timeTillDark == 1){
+                timeUnit = " hour"
+            }else{
+                timeUnit = " hours"
+            }
+            //document.getElementById("darkModeTimer").innerHTML = "Dark Mode activates in " + timeTillDark + timeUnit;
+        }
+
+        document.body.style.setProperty('--bmacColor',"#FCF7F3")
+
+        b1.style.backgroundImage = "url('/assets/img//sun.svg')";
+        b1.style.backgroundRepeat = "no-repeat";
+        b1.style.backgroundSize = "contain";
+
+        html.style.background = "#fcf7f3";
+        body.style.background = "#fcf7f3";
+        body.style.color = "#131a15";
+
+        $('.darkCompatable').css("color" , "#131a15");
+        $('.navButton').css("color" , "#fcf7f3"); //Light Text
+        $('.navButton').css("backgroundColor" , "#131a15"); //Dark Background
+
+        document.getElementById("linkContainer").classList.remove('border-dark'); document.getElementById("linkContainer").classList.add('border-light');
+
+        //document.getElementsByClassName("portalButton").classList.remove("border-dark"); document.getElementsByClassName("portalButton").classList.add("border-light");
+        //document.getElementsByClassName("portalButton").style.background = "#fcf7f3";
+        //document.getElementsByClassName("portalButton").style.color = "#131a15";
+
+
+        dark = "no";
+
+        console.log("dark inactive");
+    }
+
+
+    function detectTimeForDark(){
+
+        today = new Date();
+        time = today.getHours();
+
+        console.log("detecting time")
+
+        if (time >= timeToSwitchToDark || time <= 6){
+
+            turnDark();
+
+        } else {
+
+            turnLight();
+        }
+
+    }
+
+
+    var helpThisMakeSense = 0;
+    function checkIfUserPrefersDark(){
+        console.clear();
+
+        console.log(helpThisMakeSense);
+        if (helpThisMakeSense == 0){
+            helpThisMakeSense = 1;
+        }else{
+            helpThisMakeSense = 0;
+        }
+
+
+        let storedDark = localStorage.getItem("isDark");
+        let storedAutoDark = localStorage.getItem("autoDark");
+
+        if (storedAutoDark != null){
+            console.log("User prefers auto dark");
+            // Same as b2.onClick function
+            $('#darkModeAUTO').css("font-weight" , "800");
+            b2.innerHTML = autoOnText;
+
+            detectTimeForDark();
+
+            autoDark = "yes";
+            localStorage.setItem("autoDark", autoDark);
+            localStorage.removeItem("isDark");
+        }else{
+            console.log("User does not prefer auto dark");
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = autoOffText;
+
+            if (storedDark != null){
+                if (storedDark == "yes"){
+                    console.log("User prefers Dark mode");
+                    turnDark();
+                }else{
+                    console.log("User prefers Light mode");
+                    turnLight();
+                }
+            }else{
+                console.log("User \'Dark\' and \'Auto Dark\' preference is null.");
+                console.log("Activating auto dark ");
+                autoDark = "yes";
+                localStorage.setItem("autoDark", autoDark);
+
+            }
+        }
+
+
+
+    }
+
+    var makeDark;
+    window.onload = function () {
+        console.clear();
+
+        console.log("Running \'onLoad()\' functions...");
+        checkIfUserPrefersDark();
+
+        makeDark = setInterval(checkIfUserPrefersDark, 5000);
+    }
+
+
+
+
+    // Toggles dark mode
+    b1.onclick = function() {
+        console.clear();
+        if (dark == "yes"){
+            console.log("Dark mode manually toggled");
+
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = autoOffText;
+
+            turnLight();
+            localStorage.setItem("isDark", dark);
+            localStorage.removeItem("autoDark");
+            console.log("Dark mode setting stored");
+
+        }else{
+            console.log("Dark mode manually toggled");
+
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = autoOffText;
+
+            turnDark();
+            localStorage.setItem("isDark", dark);
+            localStorage.removeItem("autoDark");
+            console.log("Dark mode setting stored");
+
+            //from the auto dark section
+            autoDark = "no";
+            console.log("Auto dark is now inactive");
+        }
+
+    };
+
+
+    // Toggles auto dark mode
+    b2.onclick = function () {
+        console.clear();
+
+
+        if (autoDark == "no" || autoDark == null){
+            $('#darkModeAUTO').css("font-weight" , "800");
+            b2.innerHTML = autoOnText;
+
+            detectTimeForDark();
+
+            autoDark = "yes";
+            localStorage.setItem("autoDark", autoDark);
+            localStorage.removeItem("isDark");
+            console.log("Auto dark is now active");
+
+        }else{
+            $('#darkModeAUTO').css("font-weight" , "300");
+            b2.innerHTML = autoOffText;
+
+            autoDark = "no";
+            localStorage.removeItem("autoDark");
+            dark = "no";
+            turnLight();
+            localStorage.setItem("isDark", dark);
+            console.log("Auto dark is now inactive");
+        }
+
+    };
+
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="/assets/js/script.min.js"></script>
+</body>
+
+</html>
